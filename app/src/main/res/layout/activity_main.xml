@@ -14,30 +14,29 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:text="点此录音!" />
+            android:text="点此录音!"
+            android:layout_alignParentBottom="true"/>
+
+        <cc.hisong.exp2.RippleBackground xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/ripple0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            app:rb_color="#0099CC"
+            app:rb_duration="500"
+            app:rb_radius="32dp"
+            app:rb_rippleAmount="12"
+            app:rb_scale="6" />
 
         <ImageView
-            android:id="@+id/centerImage"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_centerInParent="true"
-            android:src="@drawable/image" />
+            android:id="@+id/centerImage"
+            android:src="@drawable/image"/>
     </RelativeLayout>
 
-    <cc.hisong.exp2.RippleBackground
-        android:id="@+id/ripple0"
-        android:layout_width="349dp"
-        android:layout_height="208dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        app:rb_color="#0099CC"
-        app:rb_duration="500"
-        app:rb_radius="32dp"
-        app:rb_rippleAmount="12"
-        app:rb_scale="6"
-        tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="8dp" />
 
 
 </android.support.constraint.ConstraintLayout>
