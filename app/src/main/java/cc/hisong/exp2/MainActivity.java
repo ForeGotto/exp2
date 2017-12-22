@@ -83,11 +83,11 @@ public class MainActivity extends AppCompatActivity {
                     double volume = 10 * Math.log10(mean);
                     Log.d(TAG, "分贝值:" + volume);
 
-                    MainActivity.this.runOnUiThread(() -> ripple.updateView(volume));
+                    MainActivity.this.runOnUiThread(() -> updateView(volume));
                     // 大概一秒2次
                     synchronized (lock) {
                         try {
-                            lock.wait(500);
+                            lock.wait(100);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -99,6 +99,10 @@ public class MainActivity extends AppCompatActivity {
                 mAudioRecord = null;
             }
         ).start();
+    }
+
+    private void updateView(double volume) {
+        ripple.updateView(volume);
     }
 
 }

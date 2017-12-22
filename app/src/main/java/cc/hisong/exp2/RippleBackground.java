@@ -13,7 +13,6 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.RelativeLayout;
@@ -51,8 +50,6 @@ public class RippleBackground extends RelativeLayout{
     private int[] g = {204, 204, 204, 153, 119, 68, 34, 0, 0, 0, 0, 0};
     private int[] b = {105, 167, 204, 204, 204, 204, 204, 204, 204, 204, 190, 75};
 
-    private int interval = 255 / 12;
-
     public RippleBackground(Context context) {
         super(context);
     }
@@ -84,8 +81,6 @@ public class RippleBackground extends RelativeLayout{
         rippleScale=typedArray.getFloat(R.styleable.RippleBackground_rb_scale,DEFAULT_SCALE);
         rippleType=typedArray.getInt(R.styleable.RippleBackground_rb_type,DEFAULT_FILL_TYPE);
         typedArray.recycle();
-
-        Log.d("颜色", " "+rippleColor);
 
         rippleDelay=rippleDurationTime/rippleAmount;
 
@@ -167,23 +162,21 @@ public class RippleBackground extends RelativeLayout{
         int level = (int) db;
         if (level < 15) {
             level = 0;
-        } else if (15 < level && level < 63) {
+        } else if (15 <= level && level < 55) {
             level -= 15;
-            level /= 6;
+            level /= 5;
             level += 1;
-        } else if (level <90){
-            level = level < 80 ? 9 : 10;
+        } else if (level <75){
+            level = level < 65 ? 9 : 10;
         } else {
             level = 11;
         }
         level = level > 11 ? 11 : level;
         paint.setARGB(255, r[level], g[level], b[level]);
-        level = level < 3 ? 1 : 4;
-        level = level > 5 ? 11 : level;
-        for (int i = 0; i < level; i++) {
+        for (int i = 0; i <= level; i++) {
             rippleViewList.get(i).setVisibility(VISIBLE);
         }
-        for (int i = level; i < rippleViewList.size(); i++) {
+        for (int i = level + 1; i < rippleViewList.size(); i++) {
             rippleViewList.get(i).setVisibility(GONE);
         }
     }
